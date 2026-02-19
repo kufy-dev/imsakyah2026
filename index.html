@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imsakiyah Ramadan 1447 H / 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e1a;
+    --surface: #111827;
+    --surface2: #1a2235;
+    --gold: #c9a84c;
+    --gold2: #e8c96e;
+    --teal: #1fb8a0;
+    --rose: #e05a6b;
+    --text: #e8e4d8;
+    --muted: #7a8499;
+    --border: rgba(201,168,76,0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Starfield background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 20% 50%, rgba(31,184,160,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(201,168,76,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 60% 80%, rgba(224,90,107,0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .star {
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    animation: twinkle var(--dur) ease-in-out infinite;
+    opacity: 0;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0; }
+    50% { opacity: var(--op); }
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* HEADER */
+  header {
+    text-align: center;
+    padding: 40px 16px 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .moon-icon {
+    font-size: 64px;
+    display: block;
+    margin-bottom: 8px;
+    animation: float 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(201,168,76,0.6));
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .arabic-title {
+    font-family: 'Scheherazade New', serif;
+    font-size: 2.8rem;
+    color: var(--gold2);
+    line-height: 1.2;
+    text-shadow: 0 0 30px rgba(201,168,76,0.4);
+    letter-spacing: 2px;
+  }
+
+  .main-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 4px 0;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .subtitle {
+    color: var(--gold);
+    font-size: 0.95rem;
+    font-weight: 300;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  .divider {
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 16px auto;
+  }
+
+  /* CLOCK */
+  .clock-bar {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 16px 24px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    backdrop-filter: blur(10px);
+  }
+
+  .clock-display {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--gold2);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(201,168,76,0.4);
+  }
+
+  .date-display {
+    text-align: right;
+  }
+
+  .date-display .hijri {
+    font-family: 'Scheherazade New', serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+  }
+
+  .date-display .masehi {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .countdown-section {
+    text-align: center;
+  }
+
+  .countdown-label {
+    font-size: 0.7rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .countdown-time {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--teal);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .countdown-event {
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  /* CONTROLS */
+  .controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .select-wrapper {
+    position: relative;
+  }
+
+  .select-wrapper label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+  }
+
+  select {
+    width: 100%;
+    padding: 10px 36px 10px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    appearance: none;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+
+  select:focus { outline: none; border-color: var(--gold); }
+
+  .select-wrapper::after {
+    content: '▾';
+    position: absolute;
+    right: 12px;
+    bottom: 11px;
+    color: var(--gold);
+    pointer-events: none;
+    font-size: 0.8rem;
+  }
+
+  /* JADWAL TABLE */
+  .jadwal-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+
+  .jadwal-header {
+    background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(31,184,160,0.1));
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .jadwal-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gold2);
+    letter-spacing: 1px;
+  }
+
+  .wilayah-badge {
+    background: rgba(201,168,76,0.15);
+    border: 1px solid var(--gold);
+    color: var(--gold2);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+
+  .table-scroll { overflow-x: auto; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  thead {
+    background: rgba(201,168,76,0.08);
+  }
+
+  thead th {
+    padding: 10px 8px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+
+  thead th:first-child { text-align: left; padding-left: 16px; }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: background 0.15s;
+  }
+
+  tbody tr:hover { background: rgba(201,168,76,0.05); }
+
+  tbody tr.today {
+    background: linear-gradient(90deg, rgba(201,168,76,0.12), rgba(31,184,160,0.08));
+    border-left: 3px solid var(--gold);
+  }
+
+  tbody tr.weekend {
+    background: rgba(255,255,255,0.02);
+  }
+
+  td {
+    padding: 9px 8px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  td:first-child {
+    text-align: left;
+    padding-left: 16px;
+  }
+
+  .day-num {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    border-radius: 50%;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+
+  .today .day-num {
+    background: var(--gold);
+    color: var(--bg);
+  }
+
+  .day-name {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-left: 4px;
+  }
+
+  .imsak-col { color: var(--rose); font-weight: 600; }
+  .subuh-col { color: #f0a070; }
+  .dzuhur-col { color: #a0d090; }
+  .ashar-col { color: #90c0f0; }
+  .maghrib-col { color: var(--gold2); font-weight: 600; }
+  .isya-col { color: #c090e0; }
+
+  .today-tag {
+    background: var(--gold);
+    color: var(--bg);
+    font-size: 0.6rem;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-weight: 700;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  /* TABS for MUROTAL */
+  .section-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+  }
+
+  .murotal-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+
+  .murotal-header {
+    background: linear-gradient(135deg, rgba(31,184,160,0.15), rgba(201,168,76,0.1));
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .murotal-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--teal);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Player */
+  .player-bar {
+    padding: 16px 20px;
+    background: rgba(31,184,160,0.05);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .now-playing {
+    font-size: 0.75rem;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+
+  .now-playing-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+
+  .player-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn-control {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    transition: all 0.2s;
+  }
+
+  .btn-control:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+    transform: scale(1.1);
+  }
+
+  .btn-play {
+    width: 48px;
+    height: 48px;
+    background: var(--teal);
+    border-color: var(--teal);
+    color: var(--bg);
+    font-size: 1.1rem;
+  }
+
+  .btn-play:hover {
+    background: #25d5bb;
+    border-color: #25d5bb;
+    color: var(--bg);
+    transform: scale(1.1);
+  }
+
+  .volume-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+  }
+
+  .volume-wrap span {
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  input[type=range] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 90px;
+    height: 4px;
+    background: var(--surface2);
+    border-radius: 4px;
+    outline: none;
+  }
+
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    background: var(--teal);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  /* JUZ GRID */
+  .juz-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 8px;
+    padding: 16px;
+  }
+
+  .juz-btn {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 6px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s;
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+  }
+
+  .juz-btn:hover {
+    border-color: var(--teal);
+    background: rgba(31,184,160,0.1);
+    transform: translateY(-2px);
+  }
+
+  .juz-btn.active {
+    border-color: var(--teal);
+    background: rgba(31,184,160,0.2);
+    color: var(--teal);
+    font-weight: 600;
+  }
+
+  .juz-btn .juz-num {
+    font-size: 1.2rem;
+    font-weight: 700;
+    display: block;
+    color: var(--teal);
+  }
+
+  .juz-btn.active .juz-num {
+    color: var(--teal);
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--muted);
+    font-size: 0.78rem;
+    border-top: 1px solid var(--border);
+  }
+
+  audio { display: none; }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .arabic-title { font-size: 2rem; }
+    .main-title { font-size: 1.3rem; }
+    .clock-display { font-size: 1.8rem; }
+    .controls { grid-template-columns: 1fr; }
+    .clock-bar { flex-direction: column; text-align: center; }
+    .date-display { text-align: center; }
+    .juz-grid { grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); }
+  }
+
+  .spinner {
+    display: inline-block;
+    width: 16px; height: 16px;
+    border: 2px solid rgba(31,184,160,0.3);
+    border-top-color: var(--teal);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .progress-bar-wrap {
+    width: 100%;
+    height: 4px;
+    background: var(--surface2);
+    border-radius: 4px;
+    margin-top: 10px;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--teal), var(--gold));
+    border-radius: 4px;
+    width: 0%;
+    transition: width 0.5s linear;
+  }
+
+  .error-msg {
+    background: rgba(224,90,107,0.15);
+    border: 1px solid var(--rose);
+    color: var(--rose);
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    margin: 12px 16px;
+  }
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="container">
+  <header>
+    <span class="moon-icon">🌙</span>
+    <div class="arabic-title">رمضان المبارك</div>
+    <div class="main-title">Imsakiyah Ramadan 2026</div>
+    <div class="subtitle">1447 Hijriyah &nbsp;•&nbsp; Seluruh Wilayah Indonesia</div>
+    <div class="divider"></div>
+  </header>
+
+  <!-- CLOCK BAR -->
+  <div class="clock-bar">
+    <div class="clock-display" id="clock">00:00:00</div>
+    <div class="countdown-section">
+      <div class="countdown-label" id="cntLabel">Menuju</div>
+      <div class="countdown-time" id="cntTime">--:--:--</div>
+      <div class="countdown-event" id="cntEvent">Memuat...</div>
+    </div>
+    <div class="date-display">
+      <div class="hijri" id="hijriDate">Ramadan 1447 H</div>
+      <div class="masehi" id="masehiDate">Jumat, 20 Februari 2026</div>
+    </div>
+  </div>
+
+  <!-- CONTROLS -->
+  <div class="controls">
+    <div class="select-wrapper">
+      <label>🗺️ Provinsi</label>
+      <select id="selProvinsi" onchange="updateKota()">
+        <option value="">-- Pilih Provinsi --</option>
+      </select>
+    </div>
+    <div class="select-wrapper">
+      <label>🏙️ Kota / Kabupaten</label>
+      <select id="selKota" onchange="renderJadwal()">
+        <option value="">-- Pilih Kota --</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- JADWAL -->
+  <div class="jadwal-card">
+    <div class="jadwal-header">
+      <div class="jadwal-title">📅 Jadwal Imsakiyah Ramadan 1447 H</div>
+      <div class="wilayah-badge" id="wilayahBadge">Belum Dipilih</div>
+    </div>
+    <div class="table-scroll">
+      <table id="jadwalTable">
+        <thead>
+          <tr>
+            <th>Tgl</th>
+            <th>Imsak</th>
+            <th>Subuh</th>
+            <th>Terbit</th>
+            <th>Dzuhur</th>
+            <th>Ashar</th>
+            <th>Maghrib</th>
+            <th>Isya</th>
+          </tr>
+        </thead>
+        <tbody id="jadwalBody">
+          <tr><td colspan="8" style="text-align:center;padding:30px;color:var(--muted)">Pilih wilayah untuk melihat jadwal</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- MUROTAL -->
+  <div class="murotal-card">
+    <div class="murotal-header">
+      <div class="murotal-title">🎵 Murottal Al-Qur'an 30 Juz</div>
+    </div>
+
+    <div class="player-bar">
+      <div class="now-playing">Sedang Diputar</div>
+      <div class="now-playing-title" id="npTitle">— Pilih Juz untuk Memulai —</div>
+      <div class="player-controls">
+        <button class="btn-control" onclick="prevJuz()" title="Juz Sebelumnya">⏮</button>
+        <button class="btn-control btn-play" id="btnPlay" onclick="togglePlay()" title="Play/Pause">▶</button>
+        <button class="btn-control" onclick="nextJuz()" title="Juz Berikutnya">⏭</button>
+        <div class="volume-wrap">
+          <span>🔊</span>
+          <input type="range" id="volSlider" min="0" max="1" step="0.05" value="0.8" oninput="setVolume(this.value)">
+        </div>
+      </div>
+      <div class="progress-bar-wrap" onclick="seekAudio(event)">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+
+    <div class="juz-grid" id="juzGrid"></div>
+  </div>
+
+  <footer>
+    ✨ Imsakiyah Ramadan 1447 H / 2026 M &nbsp;|&nbsp; Semua Wilayah Indonesia &nbsp;|&nbsp; Murottal Al-Qur'an 30 Juz
+    <br><small style="opacity:0.5;margin-top:4px;display:block">Jadwal bersifat estimasi. Sesuaikan dengan pengumuman resmi di wilayah Anda.</small>
+    <br><small style="opacity:0.5;">Dibuat dengan ❤️ oleh <a href="https://github.com/kufy-dev" target="_blank">KUFY-DEV</a></small>
+  </footer>
+
+</div>
+
+<audio id="audioPlayer" onended="nextJuz()" ontimeupdate="updateProgress()" oncanplay="hideSpinner()"></audio>
+
+<script>
+// ===== STARS =====
+(function() {
+  const c = document.getElementById('stars');
+  for(let i=0;i<120;i++) {
+    const s = document.createElement('div');
+    s.className='star';
+    s.style.cssText = `
+      left:${Math.random()*100}%;top:${Math.random()*100}%;
+      width:${Math.random()*2+0.5}px;height:${Math.random()*2+0.5}px;
+      --dur:${Math.random()*4+2}s;--op:${Math.random()*0.7+0.1};
+      animation-delay:${Math.random()*5}s;
+    `;
+    c.appendChild(s);
+  }
+})();
+
+// ===== MUROTTAL DATA =====
+const murottalData = [
+  { juz:1, url:'http://j.mp/2b8SiNO'},
+  { juz:2, url:'http://j.mp/2b8RJmQ'},
+  { juz:3, url:'http://j.mp/2bFSrtF'},
+  { juz:4, url:'http://j.mp/2b8SXi3'},
+  { juz:5, url:'http://j.mp/2b8RZm3'},
+  { juz:6, url:'http://j.mp/28MBohs'},
+  { juz:7, url:'http://j.mp/2bFRIZC'},
+  { juz:8, url:'http://j.mp/2bufF7o'},
+  { juz:9, url:'http://j.mp/2byr1bu'},
+  { juz:10, url:'http://j.mp/2bHfyUH'},
+  { juz:11, url:'http://j.mp/2bHf80y'},
+  { juz:12, url:'http://j.mp/2bWnTby'},
+  { juz:13, url:'http://j.mp/2bFTiKQ'},
+  { juz:14, url:'http://j.mp/2b8SUTA'},
+  { juz:15, url:'http://j.mp/2bFRQIM'},
+  { juz:16, url:'http://j.mp/2b8SegG'},
+  { juz:17, url:'http://j.mp/2brHsFz'},
+  { juz:18, url:'http://j.mp/2b8SCfc'},
+  { juz:19, url:'http://j.mp/2bFSq95'},
+  { juz:20, url:'http://j.mp/2brI1zc'},
+  { juz:21, url:'http://j.mp/2b8VcBO'},
+  { juz:22, url:'http://j.mp/2bFRxNP'},
+  { juz:23, url:'http://j.mp/2brItxm'},
+  { juz:24, url:'http://j.mp/2brHKw5'},
+  { juz:25, url:'http://j.mp/2brImlf'},
+  { juz:26, url:'http://j.mp/2bFRHF2'},
+  { juz:27, url:'http://j.mp/2bFRXno'},
+  { juz:28, url:'http://j.mp/2brI3ai'},
+  { juz:29, url:'http://j.mp/2bFRyBF'},
+  { juz:30, url:'http://j.mp/2bFREcc'},
+];
+
+let currentJuz = -1;
+let isPlaying = false;
+const audio = document.getElementById('audioPlayer');
+const volSlider = document.getElementById('volSlider');
+audio.volume = 0.8;
+
+function buildJuzGrid() {
+  const grid = document.getElementById('juzGrid');
+  murottalData.forEach((item, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'juz-btn';
+    btn.id = 'juzBtn'+i;
+    btn.innerHTML = `<span class="juz-num">${item.juz}</span>Juz ${item.juz}`;
+    btn.onclick = () => playJuz(i);
+    grid.appendChild(btn);
+  });
+}
+
+function playJuz(idx) {
+  document.querySelectorAll('.juz-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('juzBtn'+idx).classList.add('active');
+  currentJuz = idx;
+  const item = murottalData[idx];
+  document.getElementById('npTitle').textContent = `Juz ${item.juz}`;
+  audio.src = item.url;
+  audio.play().then(() => {
+    isPlaying = true;
+    document.getElementById('btnPlay').textContent = '⏸';
+  }).catch(e => {
+    // Try direct
+    console.warn('Playback note:', e);
+    isPlaying = false;
+    document.getElementById('btnPlay').textContent = '▶';
+    document.getElementById('npTitle').textContent = `Juz ${item.juz} — Klik ▶ untuk putar`;
+  });
+}
+
+function togglePlay() {
+  if(currentJuz < 0) { playJuz(0); return; }
+  if(isPlaying) {
+    audio.pause();
+    isPlaying = false;
+    document.getElementById('btnPlay').textContent = '▶';
+  } else {
+    audio.play().then(()=>{ isPlaying=true; document.getElementById('btnPlay').textContent='⏸'; });
+  }
+}
+
+function prevJuz() {
+  if(currentJuz > 0) playJuz(currentJuz-1);
+}
+
+function nextJuz() {
+  if(currentJuz < murottalData.length-1) playJuz(currentJuz+1);
+  else { isPlaying=false; document.getElementById('btnPlay').textContent='▶'; }
+}
+
+function setVolume(v) { audio.volume = v; }
+
+function updateProgress() {
+  if(!audio.duration) return;
+  const pct = (audio.currentTime / audio.duration) * 100;
+  document.getElementById('progressBar').style.width = pct + '%';
+}
+
+function seekAudio(e) {
+  if(!audio.duration) return;
+  const rect = e.currentTarget.getBoundingClientRect();
+  const ratio = (e.clientX - rect.left) / rect.width;
+  audio.currentTime = ratio * audio.duration;
+}
+
+function hideSpinner() {}
+
+// ===== WILAYAH DATA (Provinces & Cities with time offsets) =====
+// Base jadwal for WIB (UTC+7). offsets in minutes relative to Jakarta.
+const wilayahData = {
+  "Aceh": {
+    offset: -30,
+    kota: ["Banda Aceh","Lhokseumawe","Sabang","Langsa","Subulussalam","Meulaboh","Takengon","Blangpidie","Tapaktuan","Singkil"]
+  },
+  "Sumatera Utara": {
+    offset: -20,
+    kota: ["Medan","Binjai","Tebing Tinggi","Pematang Siantar","Tanjungbalai","Sibolga","Padang Sidempuan","Gunungsitoli","Stabat","Kisaran"]
+  },
+  "Sumatera Barat": {
+    offset: -15,
+    kota: ["Padang","Bukittinggi","Padangpanjang","Payakumbuh","Sawahlunto","Solok","Pariaman","Sijunjung","Dharmasraya","Pasaman Barat"]
+  },
+  "Riau": {
+    offset: 0,
+    kota: ["Pekanbaru","Dumai","Bengkalis","Siak","Kampar","Rokan Hulu","Rokan Hilir","Pelalawan","Indragiri Hulu","Indragiri Hilir"]
+  },
+  "Kepulauan Riau": {
+    offset: 5,
+    kota: ["Tanjungpinang","Batam","Bintan","Karimun","Natuna","Lingga","Anambas"]
+  },
+  "Jambi": {
+    offset: -5,
+    kota: ["Jambi","Sungai Penuh","Muaro Jambi","Batanghari","Tebo","Bungo","Merangin","Sarolangun","Tanjung Jabung Barat","Tanjung Jabung Timur"]
+  },
+  "Bengkulu": {
+    offset: -10,
+    kota: ["Bengkulu","Manna","Curup","Argamakmur","Kepahiang","Mukomuko","Lebong","Kaur","Seluma"]
+  },
+  "Sumatera Selatan": {
+    offset: -5,
+    kota: ["Palembang","Prabumulih","Pagar Alam","Lubuklinggau","Lahat","OKU","OKI","Musi Banyuasin","Banyuasin","Empat Lawang"]
+  },
+  "Bangka Belitung": {
+    offset: 5,
+    kota: ["Pangkalpinang","Sungailiat","Muntok","Toboali","Manggar","Tanjung Pandan","Belitung Timur"]
+  },
+  "Lampung": {
+    offset: -5,
+    kota: ["Bandar Lampung","Metro","Kotabumi","Kalianda","Liwa","Pringsewu","Blambangan Umpu","Sukadana","Gedung Tataan"]
+  },
+  "Banten": {
+    offset: 0,
+    kota: ["Serang","Tangerang","Cilegon","Tangerang Selatan","Pandeglang","Lebak","Rangkasbitung"]
+  },
+  "DKI Jakarta": {
+    offset: 0,
+    kota: ["Jakarta Pusat","Jakarta Utara","Jakarta Barat","Jakarta Selatan","Jakarta Timur","Kepulauan Seribu"]
+  },
+  "Jawa Barat": {
+    offset: 0,
+    kota: ["Bandung","Bekasi","Depok","Bogor","Cimahi","Sukabumi","Cirebon","Tasikmalaya","Banjar","Garut","Ciamis","Majalengka","Sumedang","Purwakarta","Karawang","Subang","Kuningan","Indramayu"]
+  },
+  "Jawa Tengah": {
+    offset: 0,
+    kota: ["Semarang","Surakarta","Magelang","Salatiga","Pekalongan","Tegal","Purwokerto","Cilacap","Kudus","Demak","Jepara","Pati","Rembang","Blora","Wonosobo","Purworejo","Kebumen","Boyolali","Klaten","Sukoharjo","Wonogiri","Karanganyar","Sragen","Grobogan","Banyumas","Brebes","Batang","Kendal","Temanggung","Pemalang"]
+  },
+  "DI Yogyakarta": {
+    offset: 0,
+    kota: ["Yogyakarta","Sleman","Bantul","Gunung Kidul","Kulon Progo","Wates"]
+  },
+  "Jawa Timur": {
+    offset: 0,
+    kota: ["Surabaya","Malang","Mojokerto","Madiun","Blitar","Kediri","Probolinggo","Pasuruan","Batu","Gresik","Sidoarjo","Lamongan","Jombang","Nganjuk","Tulungagung","Trenggalek","Ponorogo","Magetan","Pacitan","Ngawi","Bojonegoro","Tuban","Bangkalan","Sampang","Pamekasan","Sumenep","Lumajang","Jember","Banyuwangi","Bondowoso","Situbondo"]
+  },
+  "Kalimantan Barat": {
+    offset: 0,
+    kota: ["Pontianak","Singkawang","Mempawah","Sambas","Bengkayang","Landak","Sanggau","Sekadau","Sintang","Kapuas Hulu","Melawi","Ketapang","Kayong Utara","Kubu Raya"]
+  },
+  "Kalimantan Tengah": {
+    offset: 0,
+    kota: ["Palangkaraya","Sampit","Muara Teweh","Buntok","Kuala Kapuas","Pangkalan Bun","Kasongan","Tamiang Layang","Kuala Kurun","Pulang Pisau","Gunung Mas","Lamandau","Sukamara","Barito Utara","Barito Selatan"]
+  },
+  "Kalimantan Selatan": {
+    offset: 60,
+    kota: ["Banjarmasin","Banjarbaru","Martapura","Amuntai","Barabai","Rantau","Kandangan","Kotabaru","Batulicin","Tanjung","Pelaihari"]
+  },
+  "Kalimantan Timur": {
+    offset: 60,
+    kota: ["Samarinda","Balikpapan","Bontang","Tenggarong","Penajam","Tanjung Redeb","Sendawar","Tana Paser","Long Bagun"]
+  },
+  "Kalimantan Utara": {
+    offset: 60,
+    kota: ["Tanjung Selor","Tarakan","Nunukan","Malinau","Bulungan","Tideng Pale"]
+  },
+  "Bali": {
+    offset: 60,
+    kota: ["Denpasar","Singaraja","Ubud","Tabanan","Negara","Amlapura","Gianyar","Klungkung","Bangli","Mangupura"]
+  },
+  "Nusa Tenggara Barat": {
+    offset: 60,
+    kota: ["Mataram","Bima","Sumbawa Besar","Praya","Selong","Taliwang","Dompu","Raba"]
+  },
+  "Nusa Tenggara Timur": {
+    offset: 60,
+    kota: ["Kupang","Ende","Maumere","Larantuka","Ruteng","Bajawa","Waikabubak","Soe","Atambua","Labuan Bajo","Kefamenanu","Waingapu"]
+  },
+  "Sulawesi Selatan": {
+    offset: 60,
+    kota: ["Makassar","Parepare","Palopo","Makale","Watampone","Sinjai","Bulukumba","Bantaeng","Jeneponto","Takalar","Gowa","Maros","Pangkajene","Barru","Soppeng","Wajo","Sidrap","Pinrang","Enrekang","Luwu","Luwu Utara","Luwu Timur","Tana Toraja","Toraja Utara","Selayar","Kolaka Utara"]
+  },
+  "Sulawesi Tenggara": {
+    offset: 60,
+    kota: ["Kendari","Bau-Bau","Raha","Kolaka","Andoolo","Unaaha","Lasolo","Wanggudu","Rumbia"]
+  },
+  "Sulawesi Tengah": {
+    offset: 60,
+    kota: ["Palu","Luwuk","Poso","Donggala","Toli-Toli","Buol","Morowali","Banggai","Parigi","Sigi","Banggai Laut","Morowali Utara"]
+  },
+  "Sulawesi Utara": {
+    offset: 60,
+    kota: ["Manado","Bitung","Tomohon","Kotamobagu","Tondano","Amurang","Tahuna","Ulu","Siau","Melonguane"]
+  },
+  "Sulawesi Barat": {
+    offset: 60,
+    kota: ["Mamuju","Majene","Polewali Mandar","Pasangkayu","Mamasa"]
+  },
+  "Gorontalo": {
+    offset: 60,
+    kota: ["Gorontalo","Marisa","Suwawa","Kwandang","Tilamuta","Isimu","Limboto"]
+  },
+  "Maluku": {
+    offset: 120,
+    kota: ["Ambon","Tual","Namlea","Masohi","Mako","Bula","Saumlaki","Dobo","Tiakur"]
+  },
+  "Maluku Utara": {
+    offset: 120,
+    kota: ["Sofifi","Ternate","Tidore","Tobelo","Labuha","Weda","Sanana","Morotai"]
+  },
+  "Papua": {
+    offset: 120,
+    kota: ["Jayapura","Merauke","Timika","Biak","Nabire","Wamena","Fakfak","Sorong","Manokwari","Serui","Kaimana","Wasior","Bintuni","Oksibil","Dekai"]
+  },
+  "Papua Barat": {
+    offset: 120,
+    kota: ["Manokwari","Sorong","Fakfak","Kaimana","Bintuni","Babo","Ransiki","Ayamaru","Teminabuan"]
+  },
+  "Papua Selatan": {
+    offset: 120,
+    kota: ["Merauke","Bade","Kepi","Agats"]
+  },
+  "Papua Tengah": {
+    offset: 120,
+    kota: ["Nabire","Timika","Enarotali","Ilaga","Sugapa"]
+  },
+  "Papua Pegunungan": {
+    offset: 120,
+    kota: ["Wamena","Oksibil","Dekai","Tolikara","Karubaga"]
+  }
+};
+
+// ===== RAMADAN 2026 DATA =====
+// Ramadan 1447H: ~Feb 18, 2026 (estimasi) - Mar 19, 2026
+// We'll use Feb 18 - Mar 19 (30 days)
+const RAMADAN_START = new Date(2026, 1, 18); // Feb 18, 2026
+
+// Base times for Jakarta (WIB UTC+7) in minutes from midnight
+// Ramadan Feb-Mar in Indonesia
+const baseJadwal = [
+  // [imsak, subuh, terbit, dzuhur, ashar, maghrib, isya]
+  // Day 1 Feb 18
+  [284, 294, 412, 738, 1001, 1082, 1200],
+  [284, 294, 412, 738, 1001, 1082, 1200],
+  [284, 294, 412, 738, 1001, 1082, 1200],
+  [283, 293, 411, 737, 1000, 1081, 1199],
+  [283, 293, 411, 737, 1000, 1081, 1199],
+  [282, 292, 410, 737, 1000, 1081, 1199],
+  [282, 292, 410, 737, 1000, 1082, 1200],
+  [281, 291, 410, 737, 1000, 1082, 1200],
+  [281, 291, 409, 737, 1000, 1082, 1200],
+  [280, 290, 409, 736, 999, 1082, 1200], // Day 10
+  [280, 290, 408, 736, 999, 1082, 1200],
+  [279, 289, 408, 736, 999, 1082, 1200],
+  [279, 289, 407, 736, 999, 1083, 1201],
+  [278, 288, 407, 735, 998, 1083, 1201],
+  [278, 288, 406, 735, 998, 1083, 1201],
+  [277, 287, 406, 735, 998, 1083, 1201],
+  [277, 287, 405, 735, 998, 1083, 1201],
+  [276, 286, 405, 734, 997, 1083, 1201],
+  [276, 286, 404, 734, 997, 1083, 1201],
+  [275, 285, 404, 734, 997, 1084, 1202], // Day 20
+  [275, 285, 403, 734, 997, 1084, 1202],
+  [274, 284, 403, 733, 996, 1084, 1202],
+  [274, 284, 402, 733, 996, 1084, 1202],
+  [273, 283, 402, 733, 996, 1084, 1202],
+  [273, 283, 401, 733, 996, 1084, 1202],
+  [272, 282, 401, 732, 995, 1084, 1202],
+  [272, 282, 400, 732, 995, 1084, 1202],
+  [271, 281, 400, 732, 995, 1084, 1202],
+  [271, 281, 399, 732, 995, 1085, 1203],
+  [270, 280, 399, 731, 994, 1085, 1203], // Day 30
+];
+
+function minsToTime(mins) {
+  const h = Math.floor(mins / 60) % 24;
+  const m = mins % 60;
+  return String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0');
+}
+
+const DAYS_ID = ['Ahad','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
+const MONTHS_ID = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Ags','Sep','Okt','Nov','Des'];
+const HIJRI_MONTHS = ['Muharram','Shafar','Rabi\'ul Awal','Rabi\'ul Akhir','Jumadal Ula','Jumadal Akhirah','Rajab','Sya\'ban','Ramadan','Syawal','Dzulqa\'dah','Dzulhijjah'];
+
+function populateProvinsi() {
+  const sel = document.getElementById('selProvinsi');
+  Object.keys(wilayahData).sort().forEach(prov => {
+    const opt = document.createElement('option');
+    opt.value = prov;
+    opt.textContent = prov;
+    sel.appendChild(opt);
+  });
+}
+
+function updateKota() {
+  const prov = document.getElementById('selProvinsi').value;
+  const selKota = document.getElementById('selKota');
+  selKota.innerHTML = '<option value="">-- Pilih Kota --</option>';
+  if(!prov) return;
+  wilayahData[prov].kota.forEach(kota => {
+    const opt = document.createElement('option');
+    opt.value = kota;
+    opt.textContent = kota;
+    selKota.appendChild(opt);
+  });
+  renderJadwal();
+}
+
+function renderJadwal() {
+  const prov = document.getElementById('selProvinsi').value;
+  const kota = document.getElementById('selKota').value;
+  if(!prov) {
+    document.getElementById('jadwalBody').innerHTML = '<tr><td colspan="8" style="text-align:center;padding:30px;color:var(--muted)">Pilih wilayah untuk melihat jadwal</td></tr>';
+    return;
+  }
+  
+  const displayName = kota ? `${kota}, ${prov}` : prov;
+  document.getElementById('wilayahBadge').textContent = displayName;
+  
+  const offset = wilayahData[prov].offset; // in minutes
+  const today = new Date();
+  const todayDate = today.getDate();
+  const todayMonth = today.getMonth();
+  const todayYear = today.getFullYear();
+
+  let rows = '';
+  for(let i = 0; i < 30; i++) {
+    const d = new Date(RAMADAN_START.getTime());
+    d.setDate(d.getDate() + i);
+    const dow = DAYS_ID[d.getDay()];
+    const dayNum = d.getDate();
+    const mon = MONTHS_ID[d.getMonth()];
+    const yr = d.getFullYear();
+    
+    const isToday = d.getDate()===todayDate && d.getMonth()===todayMonth && d.getFullYear()===todayYear;
+    const isWeekend = d.getDay()===0 || d.getDay()===5;
+    
+    const base = baseJadwal[i];
+    const times = base.map(t => minsToTime(t + offset));
+    
+    const rowClass = isToday ? 'today' : (isWeekend ? 'weekend' : '');
+    const todayTag = isToday ? '<span class="today-tag">Hari Ini</span>' : '';
+    
+    rows += `<tr class="${rowClass}">
+      <td>
+        <span class="day-num">${dayNum}</span>
+        <span class="day-name">${dow}, ${dayNum} ${mon}</span>
+        ${todayTag}
+      </td>
+      <td class="imsak-col">${times[0]}</td>
+      <td class="subuh-col">${times[1]}</td>
+      <td style="color:var(--muted)">${times[2]}</td>
+      <td class="dzuhur-col">${times[3]}</td>
+      <td class="ashar-col">${times[4]}</td>
+      <td class="maghrib-col">${times[5]}</td>
+      <td class="isya-col">${times[6]}</td>
+    </tr>`;
+  }
+  
+  document.getElementById('jadwalBody').innerHTML = rows;
+  
+  // Scroll to today
+  setTimeout(() => {
+    const todayRow = document.querySelector('#jadwalTable tbody tr.today');
+    if(todayRow) todayRow.scrollIntoView({behavior:'smooth', block:'center'});
+  }, 100);
+  
+  updateCountdown(prov);
+}
+
+// ===== CLOCK & COUNTDOWN =====
+function updateClock() {
+  const now = new Date();
+  const h = String(now.getHours()).padStart(2,'0');
+  const m = String(now.getMinutes()).padStart(2,'0');
+  const s = String(now.getSeconds()).padStart(2,'0');
+  document.getElementById('clock').textContent = `${h}:${m}:${s}`;
+  
+  // Masehi date
+  const day = DAYS_ID[now.getDay()];
+  const date = now.getDate();
+  const mon = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'][now.getMonth()];
+  const yr = now.getFullYear();
+  document.getElementById('masehiDate').textContent = `${day}, ${date} ${mon} ${yr}`;
+  
+  // Hijri estimate for Ramadan
+  const dayInRamadan = Math.floor((now - RAMADAN_START) / 86400000) + 1;
+  if(dayInRamadan >= 1 && dayInRamadan <= 30) {
+    document.getElementById('hijriDate').textContent = `${dayInRamadan} Ramadan 1447 H`;
+  } else if(dayInRamadan < 1) {
+    const daysLeft = Math.ceil((RAMADAN_START - now) / 86400000);
+    document.getElementById('hijriDate').textContent = `${daysLeft} hari menuju Ramadan`;
+  } else {
+    document.getElementById('hijriDate').textContent = '1 Syawal 1447 H';
+  }
+  
+  updateCountdown();
+}
+
+let lastProv = '';
+let todaySchedule = null;
+
+function updateCountdown(prov) {
+  if(prov) lastProv = prov;
+  if(!lastProv) return;
+  
+  const now = new Date();
+  const dayInRamadan = Math.floor((now - RAMADAN_START) / 86400000);
+  if(dayInRamadan < 0 || dayInRamadan >= 30) {
+    document.getElementById('cntEvent').textContent = 'Di luar Ramadan';
+    document.getElementById('cntTime').textContent = '--:--:--';
+    return;
+  }
+  
+  const offset = wilayahData[lastProv].offset;
+  const base = baseJadwal[dayInRamadan];
+  const nowMins = now.getHours()*60 + now.getMinutes() + now.getSeconds()/60;
+  
+  const events = [
+    { name:'Imsak', mins: base[0]+offset },
+    { name:'Subuh', mins: base[1]+offset },
+    { name:'Dzuhur', mins: base[3]+offset },
+    { name:'Ashar', mins: base[4]+offset },
+    { name:'Maghrib (Buka)', mins: base[5]+offset },
+    { name:'Isya', mins: base[6]+offset },
+  ];
+  
+  let nextEvent = null;
+  for(const ev of events) {
+    if(ev.mins > nowMins) { nextEvent = ev; break; }
+  }
+  
+  if(!nextEvent) {
+    // Next day imsak
+    if(dayInRamadan+1 < 30) {
+      const nextBase = baseJadwal[dayInRamadan+1];
+      nextEvent = { name:'Imsak (Besok)', mins: nextBase[0]+offset + 1440 };
+    }
+  }
+  
+  if(nextEvent) {
+    let diff = nextEvent.mins - nowMins;
+    if(diff < 0) diff += 1440;
+    const h = Math.floor(diff/60);
+    const m = Math.floor(diff%60);
+    const s = Math.floor((diff*60)%60);
+    document.getElementById('cntLabel').textContent = 'Menuju';
+    document.getElementById('cntTime').textContent = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    document.getElementById('cntEvent').textContent = nextEvent.name;
+  }
+}
+
+// ===== INIT =====
+buildJuzGrid();
+populateProvinsi();
+updateClock();
+setInterval(updateClock, 1000);
+
+// Auto-detect Jakarta
+window.onload = () => {
+  document.getElementById('selProvinsi').value = 'DKI Jakarta';
+  updateKota();
+  document.getElementById('selKota').value = 'Jakarta Pusat';
+  renderJadwal();
+};
+</script>
+</body>
+</html>
